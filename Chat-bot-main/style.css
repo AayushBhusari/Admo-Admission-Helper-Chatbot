@@ -1,0 +1,6 @@
+.no-cursor {
+  cursor: pointer;
+}
+.chat-message {
+  cursor: default;
+}

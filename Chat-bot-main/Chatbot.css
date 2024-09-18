@@ -1,0 +1,763 @@
+/* General reset and full-page flex layout */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Bruno Ace", sans-serif; /* Apply Bruno Ace globally */
+  color: rgb(9, 9, 9);
+}
+
+html,
+body {
+  height: 100%;
+  font-family: "Roboto", sans-serif; /* Provide a default font */
+  margin: 0;
+  color: black;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #f4f4f4;
+  overflow: hidden; /* Ensure no overflow */
+  position: relative;
+  height: 100%;
+}
+
+/* Bot name styling */
+.bot-name {
+  font-size: 3em;
+  height: 123px;
+  text-align: center;
+  font-weight: bold;
+  text-align: center;
+  background-color: blue;
+  padding: 12px;
+}
+
+/* Keyframes for the chat container transition */
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* Hamburger menu */
+.menu-toggle {
+  font-size: 24px;
+  cursor: pointer;
+  position: fixed; /* Fixed positioning */
+  left: 305px;
+  top: 25px;
+  color: inherit;
+  color: rgb(250, 247, 247);
+  transition: color 0.3s ease;
+}
+@media (max-width: 768px) {
+  .menu-toggle {
+    font-size: 20px;
+    left: 20px;
+    top: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .menu-toggle {
+    font-size: 18px;
+    left: 10px;
+    top: 10px;
+  }
+}
+
+/* New Inquiry button */
+.new-inquiry {
+  font-size: 1rem;
+  cursor: pointer;
+  position: fixed; /* Use fixed positioning */
+  top: 30px;
+  left: 23%;
+  color: white;
+  background-color: #28a745;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  z-index: 2;
+}
+
+/* Responsive adjustments */
+/* For smaller screens (mobile) */
+@media (max-width: 600px) {
+  .new-inquiry {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+    left: 10%; /* Adjust the position to fit smaller screens */
+    top: 20px;
+  }
+}
+
+/* For medium screens (tablets) */
+@media (min-width: 601px) and (max-width: 900px) {
+  .new-inquiry {
+    font-size: 0.9rem;
+    padding: 0.45rem 0.9rem;
+    left: 18%; /* Adjust positioning for tablets */
+    top: 25px;
+  }
+}
+
+/* For larger screens (desktops) */
+@media (min-width: 901px) {
+  .new-inquiry {
+    font-size: 1.1rem;
+    padding: 0.6rem 1.2rem;
+    left: 23%; /* Keep as default for larger screens */
+    top: 30px;
+  }
+}
+
+.new-inquiry:hover {
+  background-color: #218838;
+  transform: scale(1.05);
+}
+
+/* Sign In button */
+.sign-in {
+  font-size: 16px;
+  cursor: pointer;
+  position: fixed; /* Use fixed positioning */
+  left: 15px;
+  top: 5px;
+  border-radius: 20px;
+  padding: 5px 15px;
+  color: #333;
+  text-align: center;
+}
+
+/* Profile and Share Container */
+.profile-share-container {
+  display: flex;
+  align-items: center;
+  position: fixed; /* Use fixed positioning */
+  right: 615px;
+  color: white;
+  top: 45px;
+}
+
+/* Profile Icon */
+.profile-icon {
+  font-size: 24px;
+  cursor: pointer;
+  margin-right: 10px;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.profile-icon:hover {
+  color: #007bff;
+}
+
+/* Share Chat (Upload Icon) */
+.share-chat {
+  position: relative;
+  display: inline-block;
+  margin-left: 15px;
+  height: 123px;
+  left: 450px;
+  top: -30px;
+}
+
+.share-chat-label {
+  display: none;
+  position: absolute;
+  bottom: -20px;
+  top: -22px;
+  left: 480px;
+  transform: translateX(-50%);
+  background-color: transparent;
+  color: rgb(255, 255, 255);
+  font-size: 12px;
+  white-space: pre-wrap;
+  text-align: center;
+  pointer-events: none;
+  width: max-content;
+}
+
+.share-chat:hover .share-chat-label {
+  display: block;
+  color: black;
+  padding: 3px 6px;
+  border-radius: 4px;
+  font-size: 12px;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Upload icon */
+.upload-icon {
+  width: 30px;
+  height: 30px;
+}
+
+.upload-tooltip {
+  display: none;
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #fff;
+  color: #000;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.upload-icon:hover + .upload-tooltip {
+  display: block;
+}
+@media (max-width: 1024px) {
+  .profile-share-container {
+    right: 350px;
+    top: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .profile-share-container {
+    right: 20px;
+    top: 20px;
+  }
+
+  .profile-icon {
+    font-size: 20px;
+  }
+
+  .share-chat {
+    margin-left: 10px;
+    height: 100px;
+    left: auto;
+    top: auto;
+  }
+
+  .share-chat-label {
+    font-size: 10px;
+  }
+
+  .upload-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .upload-tooltip {
+    font-size: 10px;
+    padding: 4px 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-share-container {
+    right: 10px;
+    top: 10px;
+    flex-direction: column;
+  }
+
+  .profile-icon {
+    font-size: 18px;
+    margin-right: 5px;
+  }
+
+  .share-chat {
+    margin-left: 5px;
+    height: 80px;
+  }
+
+  .share-chat-label {
+    font-size: 8px;
+  }
+
+  .upload-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .upload-tooltip {
+    font-size: 8px;
+    padding: 3px 6px;
+  }
+}
+
+/* Send Button */
+#sendButton {
+  background-color: #007bff;
+  color: white;
+  border: 2px solid black;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.1s;
+}
+#sendButton:hover {
+  background-color: #0056b3; /* Darker shade on hover */
+}
+
+#sendButton:active {
+  background-color: #004080; /* Even darker shade on click */
+  transform: scale(0.98); /* Slightly shrink on click */
+}
+#sendButton:focus {
+  outline: 2px solid #0056b3; /* Focus outline for accessibility */
+  outline-offset: 2px;
+}
+
+.chat-box {
+  overflow-y: auto; /* Allow vertical scrolling */
+  overflow-x: hidden; /* Hide horizontal overflow */
+  flex-grow: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+  padding: 15px;
+  max-height: 100%;
+
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  white-space: pre-wrap; /* Allow text to wrap */
+  max-width: 100%; /* Allow messages to use more space */
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* Scroll bar styling (optional for better UX) */
+.chat-box::-webkit-scrollbar {
+  width: 10px;
+}
+
+.chat-box::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.chat-box::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+.chat-box::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Chat message styling */
+.chat-message,
+.bot-message,
+.user-message {
+  padding: 10px;
+  border-radius: 15px;
+  max-width: 90%; /* Allow more space for messages */
+  margin-bottom: 10px;
+  word-wrap: break-word; /* Ensure long words wrap */
+  white-space: pre-wrap; /* Ensure multi-line text wraps correctly */
+  overflow: visible; /* Remove hidden overflow to avoid truncation */
+  text-align: left; /* Align text to the left */
+  font-family: "Bruno Ace", sans-serif;
+}
+
+/* Bot message styling */
+.bot-message {
+  background-color: #e9ecef;
+  align-self: flex-start;
+  color: #000;
+}
+
+/* User message styling */
+.user-message {
+  background-color: #007bff;
+  align-self: flex-end;
+  color: #fff; /* Better text contrast for user messages */
+}
+
+#sendButton:hover {
+  background-color: #0056b3;
+}
+
+/* Sidebar (Chat History) */
+/* Sidebar (Chat History) */
+/* Sidebar styling */
+.sidebar {
+  position: absolute;
+  top: 153px;
+  width: 250px;
+  height: 78%;
+  background-color: #343a40;
+  color: white;
+  padding: 20px;
+  opacity: 0;
+  transform: translateX(-100%); /* Sidebar starts off-screen */
+  transition: transform 200ms ease-out, opacity 200ms ease-out; /* Smooth transition */
+  z-index: 2; /* Initial z-index */
+}
+
+/* Sidebar on hover should come on top */
+.sidebar:hover {
+  z-index: 10;
+  transform: translateX(0); /* Slide in on hover */
+  opacity: 1; /* Make the sidebar visible */
+}
+
+/* Show class: Adds a transform for bringing the sidebar fully on-screen */
+.sidebar.show {
+  transform: translateX(0); /* Bring the sidebar into view */
+  opacity: 1; /* Make it fully visible */
+  z-index: 999; /* Ensures it's on top of other elements */
+}
+
+/* Inquiry button and navbar styling */
+.inquiry-button,
+.navbar {
+  position: relative;
+  z-index: 5; /* Lower than sidebar's z-index when it's visible */
+}
+/* Responsive Sidebar for smaller devices */
+@media (max-width: 900px) {
+  .sidebar {
+    width: 200px; /* Adjust width for smaller screens */
+    top: 100px; /* Adjust top positioning */
+    height: 70%; /* Adjust height */
+  }
+}
+
+@media (max-width: 600px) {
+  .sidebar {
+    width: 150px; /* Further reduce width for very small screens */
+    top: 80px; /* Adjust top positioning */
+    height: 65%; /* Adjust height */
+    padding: 15px; /* Reduce padding for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar {
+    width: 100px; /* Further reduce width */
+    top: 70px; /* Adjust positioning */
+    height: 60%; /* Adjust height for very small screens */
+    padding: 10px; /* Reduce padding */
+  }
+}
+
+/* Optional: You may want to adjust the z-index for other content */
+
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 300px;
+  position: relative;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Animation for the login form */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+#loginForm,
+#otpForm {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Style for the Sign In option */
+.sign-in-option {
+  font-size: 16px;
+  padding: 10px;
+  background-color: transparent;
+  color: black;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.sign-in-option:hover {
+  background-color: #f0f0f0;
+  color: #333;
+  transform: scale(1.1);
+  cursor: pointer;
+  border: 1px solid #ccc;
+}
+
+/* Navigation Panel Styling */
+.nav-panel {
+  background-color: #333;
+  padding: 10px 0;
+  text-align: center;
+  margin-top: 0px;
+}
+
+.nav-options {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.nav-options li {
+  display: inline;
+  margin-right: 20px;
+}
+
+.nav-options li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 5px 10px;
+  font-size: 18px;
+}
+
+.nav-options li a:hover {
+  background-color: #555;
+  border-radius: 5px;
+  color: #fff;
+}
+
+/* Photo Reel Container */
+.photo-reel-container {
+  width: 100%;
+  height: 162px; /* Match the height you want */
+  overflow: hidden; /* Hide overflow to only show the visible area */
+  position: absolute; /* Place it at the bottom */
+  bottom: -162px; /* Align it to the bottom */
+  left: 0; /* Full-width alignment */
+  background-color: #f4f4f4; /* Optional: background color */
+  border-top: 1px solid #ddd; /* Optional: border to separate from chat */
+  z-index: 0; /* Ensure it is above background but below chat */
+  /* Add animation for pop-in effect */
+  animation: popIn 2s ease forwards; /* Play the animation once on load */
+}
+
+/* Keyframes for pop-in effect */
+@keyframes popIn {
+  0% {
+    transform: scale(0); /* Start from 0 size */
+    opacity: 0; /* Fully transparent */
+  }
+  80% {
+    transform: scale(1.1); /* Slightly larger for a "bounce" effect */
+    opacity: 1; /* Fully visible */
+  }
+  100% {
+    transform: scale(1); /* Final state: normal size */
+    opacity: 1; /* Fully visible */
+  }
+}
+
+/* Continuous Scrolling Animation */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%); /* Adjust this value to ensure smooth loop */
+  }
+}
+/* Ensure the chat container takes the full viewport height */
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Full viewport height */
+}
+
+.chat-box {
+  flex-grow: 1; /* Allow chat box to grow and take up available space */
+  overflow-y: auto; /* Enable scrolling if content overflows */
+  padding: 15px;
+  box-sizing: border-box;
+  background-color: #f9f9f9; /* Optional: Background color for the chat box */
+}
+
+.input-area {
+  display: flex;
+  align-items: center; /* Vertically center items */
+  padding: 10px;
+  border-top: 1px solid #ddd; /* Optional: Border to separate from chat box */
+  background-color: #fff; /* Optional: Background color for the input area */
+}
+
+#messageInput {
+  flex-grow: 1; /* Allow input to grow and take available space */
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  margin-right: 10px; /* Space between input and button */
+}
+
+#sendButton {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.1s, box-shadow 0.3s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#sendButton:hover {
+  background-color: #0056b3;
+}
+
+#sendButton:active {
+  background-color: #004080;
+  transform: scale(0.98);
+}
+
+#sendButton:focus {
+  outline: 2px solid #0056b3;
+  outline-offset: 2px;
+}
+
+/* style.css part */
+/* header */
+.header {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 25px 13%;
+  background-color: #ff0088;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: black;
+  z-index: 100;
+}
+/* navbar and all elements */
+.header .navbar a {
+  position: relative;
+  top: -3px;
+  font-size: 20px;
+  font-weight: 500;
+  color: #181818;
+  margin-right: 30px;
+  text-decoration: none;
+}
+.navbar a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #ffffff;
+  bottom: -5px;
+  border-radius: 5px;
+  transform: translateY(10px);
+  opacity: 0;
+  transition: 0.5s ease;
+}
+.navbar a:hover:after {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* main container of the page where there are all the elements present */
+.cont {
+  width: 956px;
+  height: 503px;
+  position: relative;
+  top: -134px;
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 768px) {
+  /* For tablets and smaller devices */
+
+  .header {
+    flex-direction: column;
+    padding: 20px 10px;
+  }
+
+  .header .navbar a {
+    font-size: 1rem;
+    margin-right: 15px;
+  }
+
+  .cont {
+    width: 95%;
+    padding-top: 10px;
+  }
+
+  #sendButton {
+    left: 0;
+  }
+
+  .share-chat {
+    margin-left: 5%;
+  }
+
+  .profile-icon {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  /* For mobile devices */
+
+  .header {
+    padding: 15px 5px;
+  }
+
+  .header .navbar a {
+    font-size: 0.9rem;
+    margin-right: 10px;
+  }
+
+  .cont {
+    width: 100%;
+    padding-top: 5px;
+  }
+
+  .profile-icon {
+    font-size: 1rem;
+  }
+
+  .share-chat {
+    margin-left: 2%;
+  }
+
+  .share-chat-label {
+    font-size: 0.8rem;
+  }
+}

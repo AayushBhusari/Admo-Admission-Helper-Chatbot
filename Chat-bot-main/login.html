@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - CIA Chatbot</title>
+  <link rel="stylesheet" href="login.css">
+  <link href="https://fonts.googleapis.com/css2?family=Bruno+Ace&display=swap" rel="stylesheet">
+  <!-- Firebase CDN -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js"></script>
+</head>
+<body>
+  <div class="login-container">
+    <h1>Welcome to CIA Chatbot</h1>
+    <p style="color: green;">Please sign in to continue</p>
+
+    <!-- Google Sign-In Button -->
+    <div id="google-signin-button"></div>
+
+    <!-- Email/Password Login Form -->
+    <div class="email-login">
+      <h2>Login with Email</h2>
+      <form id="email-login-form">
+        <input type="email" id="email" placeholder="Enter your email" required style="height: 35px;width: 163px;border-radius: 23px; text-align: center;">
+        <input type="password" id="password" placeholder="Enter your password" required style="height: 35px;width: 163px;border-radius: 23px; text-align: center;">
+        <button type="submit" style="height: 33px;width: 67px;text-align: center;border-radius: 23px; position: relative;top: 10px;cursor: pointer;">Login</button>
+      </form>
+    </div>
+    <!-- Phone Number Login with OTP -->
+    <div class="phone-login">
+      <h2>Login with Phone</h2>
+      <form id="phone-login-form">
+        <input type="tel" id="phone" placeholder="Enter your phone number" required style="height: 35px;width: 163px;border-radius: 23px; text-align: center;">
+        <button type="button" id="get-otp" style="height: 33px;width: 67px;text-align: center;border-radius: 23px; position: relative;top: 10px;cursor: pointer;">Get OTP</button>
+          <a href="index.html"type="button" style="height: 43px;width: 7px;text-align: center;border-radius: 23px; position: relative;top: 10px;cursor: pointer;text-decoration: none;border: 2px solid black;color: black;font-size: 25px;font-weight: 300;text-align: center;">Done</a>
+        <input type="text" id="otp" placeholder="Enter OTP" style="display:none;">
+        <button type="submit" id="verify-otp" style="display:none;">Verify OTP</button>
+      </form>
+    </div>
+
+    <!-- reCAPTCHA element -->
+    <div id="recaptcha-container"></div>
+
+  </div>
+  
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-analytics.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyDQNJ5sNb9INrlpXnNmunWpmGnSBgwQt9U",
+      authDomain: "ai-chatbot-899da.firebaseapp.com",
+      projectId: "ai-chatbot-899da",
+      storageBucket: "ai-chatbot-899da.appspot.com",
+      messagingSenderId: "514407544832",
+      appId: "1:514407544832:web:665d26fa858f97444d40e5",
+      measurementId: "G-7SRJG3GP7Y"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+  </script>
+  
+  <!-- Custom JavaScript -->
+  <script src="login.js"></script>
+</body>
+</html>

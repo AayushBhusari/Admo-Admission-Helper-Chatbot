@@ -1,0 +1,2 @@
+
+db.colleges.findOne({ name: 'G H Raisoni College of Engineering' }, { 'Fee Structure': 1, _id: 0 })
